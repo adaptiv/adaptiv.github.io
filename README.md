@@ -45,12 +45,13 @@ Images are in '/img/about/'
 
 ## Run locally
 
-- [Ruby](https://www.ruby-lang.org/en/) ([rbenv](https://github.com/rbenv/rbenv) recommended)
-- [Bundler](https://bundler.io/)
+- [asdf](brew install asdf)
 
 Run:
 
 ```bash
+asdf install
+gem install bundler
 bundle install
 make start
 ```
