@@ -8,53 +8,43 @@ description: "Adaptiv är ett IT-konsultbolag med verksamhet i Stockholmsområde
 
 # Team names, titles and social links
 people:
-- name: Adam Killander
-  pic: 1
-  about: Systemutvecklare (fokus på Javascript, Java), teamledare/coach, agil coach, harmoniskapande teaterapa
-  social:
-  - title: twitter
-    url: http://twitter.com/adamkillander
-  - title: linkedin
-    url: https://www.linkedin.com/in/adamkillander/
+  - name: Adam Killander
+    pic: 1
+    about: Systemutvecklare (fokus på Javascript, Java), teamledare/coach, agil coach, harmoniskapande teaterapa
+    social:
+      - title: linkedin
+        url: https://www.linkedin.com/in/adamkillander
 
-- name: Johan Dewe
-  pic: 2
-  about: Systemutvecklare (fokus på Go, Python, Kubernetes, devops), teknisk ledare/coach, teamledare/coach, snöälskande seglare.
-  social:
-  - title: twitter
-    url: http://twitter.com/johandewe
-  - title: linkedin
-    url: https://www.linkedin.com/in/johandewe/
+  - name: Johan Dewe
+    pic: 2
+    about: Systemutvecklare (fokus på Go, Python, Kubernetes, devops), teknisk ledare/coach, teamledare/coach, snöälskande seglare.
+    social:
+      - title: linkedin
+        url: https://www.linkedin.com/in/johandewe
 
-- name: Joakim M. Holm
-  pic: 3
-  about: Organisationsutvecklare, interimschef, teamledare/coach, systemutvecklare (fokus på Elixir, Java), pianistisk idealist
-  social:
-  - title: twitter
-    url: http://twitter.com/jockeholm
-  - title: linkedin
-    url: https://www.linkedin.com/in/jockeholm/
+  - name: Joakim M. Holm
+    pic: 3
+    about: Organisationsutvecklare, interimschef, teamledare/coach, systemutvecklare (fokus på Elixir, Java), pianistisk idealist
+    social:
+      - title: linkedin
+        url: https://www.linkedin.com/in/jockeholm
 
-- name: Johan Hallstensson
-  pic: 4
-  about: Systemutvecklare (fokus på Elixir, Ruby), teknisk ledare/coach, mobbprogrammeringsexpert, teamkär egenfixare
-  social:
-  - title: twitter
-    url: http://twitter.com/jlind
+  - name: Johan Hallstensson
+    pic: 4
+    about: Systemutvecklare (fokus på Elixir, Ruby), teknisk ledare/coach, mobbprogrammeringsexpert, teamkär egenfixare
+    social:
+      - title: linkedin
+        url: https://www.linkedin.com/in/johanhallstensson
 
-- name: Måns Sandström
-  pic: 5
-  about: Systemutvecklare (fokus på Ruby, Elixir, Java), ledarskapscoach, organisationsutvecklare, förändringsguide
-  social:
-  - title: twitter
-    url: http://twitter.com/manssandstrom
-  - title: linkedin
-    url: https://www.linkedin.com/in/manssandstrom/
+  - name: Måns Sandström
+    pic: 5
+    about: Systemutvecklare (fokus på Ruby, Elixir, Java), ledarskapscoach, organisationsutvecklare, förändringsguide
+    social:
+      - title: linkedin
+        url: https://www.linkedin.com/in/manssandstrom/
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
-  - title: twitter
-    url: http://twitter.com/adaptivsthlm
   - title: linkedin
     url: https://se.linkedin.com/company/adaptiv-sthlm-ab
 
