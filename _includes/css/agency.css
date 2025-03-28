@@ -342,7 +342,7 @@ section h2.section-heading {
     font-size: 40px;
 }
 
-section h3.section-subheading {
+section .section-subheading {
     margin-bottom: 75px;
     text-transform: none;
     font-family: {{ site.data.template.font.secondary }};
@@ -650,7 +650,7 @@ section h3.section-subheading {
     border: 7px solid #fff;
 }
 
-.team-member h4 {
+.team-member h3 {
     margin-top: 25px;
     margin-bottom: 0;
     text-transform: none;
