@@ -31,7 +31,7 @@ Custom plugins in `_plugins/` do not run in that build, nor locally under the `g
 
 Pages are thin root files that only pick a layout; the content is in `_includes/`:
 
-- `index.html` → `_layouts/index.html`, which stitches the start page from section includes (`hero`, `services`, `team`, `about`, `contact`). The layout has no `{{ content }}`, so the body of `index.html` is never rendered.
+- `index.html` → `_layouts/index.html`, which stitches the start page from section includes (`services`, `team`, `about`, `contact`). The layout has no `{{ content }}`, so the body of `index.html` is never rendered.
 - `sustainability.html` and `accounting.html` → a layout of the same name → the include of the same name.
 - `posts.html` lists the articles and uses `_layouts/default.html`, as does `_layouts/post.html`.
 
