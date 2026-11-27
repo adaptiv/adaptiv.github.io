@@ -42,7 +42,7 @@ python3 -c "from decimal import Decimal as D; r,e,p,o=map(D,'2091092.70 292488.1
 
 **The PDF.** Copy it to `assets/pdf/accounting/` as `Resultatrapport_YYYYMMDD-YYYYMMDD_Adaptiv_Sthlm_AB.pdf`. Some older files have a double underscore after "Resultatrapport"; leave those alone and use a single one for new files.
 
-**The data entry.** Append to `_data/accounting.yml`, keeping the entries in date order (the charts draw them in file order):
+**The data entry.** Append to `_data/accounting.yml`, keeping the entries in date order, oldest first (the charts show the last eight entries of the file, newest on top):
 
 ```yaml
 - from: 2026-07-01
@@ -66,7 +66,7 @@ The "Period fg år" column often differs from what the report for that quarter s
 
 If `make start` is running, the site regenerates by itself; otherwise run `bundle exec jekyll build`. Then check the built page (`http://localhost:4000/accounting/` or `_site/accounting/index.html`):
 
-- The new quarter is the last row in both charts, with values that match the PDF (kronor per 100 kr in the first chart, mkr in the second).
+- The new quarter is the top row in both charts, and the oldest of the previous eight is gone, with values that match the PDF (kronor per 100 kr in the first chart, mkr in the second).
 - The quarter's link in the chart and the new list item both point to a file that exists in `_site/assets/pdf/accounting/`.
 - A loss quarter shows "förlust N kr" in the first chart and a bar to the left of the zero line in the second.
 

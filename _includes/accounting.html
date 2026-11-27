@@ -8,10 +8,11 @@
     </div>
     {% assign months = "jan,feb,mar,apr,maj,jun,jul,aug,sep,okt,nov,dec" | split: "," %}
     {% assign series = "revenue,costs,result" | split: "," %}
+    {% assign quarters = site.data.accounting | reverse | slice: 0, 8 %}
     {% assign max_share = 100 %}
     {% assign max_amount = 0 %}
     {% assign min_result = 0 %}
-    {% for q in site.data.accounting %}
+    {% for q in quarters %}
       {% assign costs = q.external_costs | plus: q.personnel_costs %}
       {% assign share = costs | times: 100 | divided_by: q.revenue %}
       {% if share > max_share %}{% assign max_share = share %}{% endif %}
@@ -37,7 +38,7 @@
           <li><span class="swatch split-result"></span>Rörelseresultat</li>
         </ul>
         <ul class="split-chart">
-          {% for q in site.data.accounting %}
+          {% for q in quarters %}
             {% assign from = q.from | date: "%-m" | minus: 1 %}
             {% assign to = q.to | date: "%-m" | minus: 1 %}
             {% assign personnel = q.personnel_costs | times: 100 | divided_by: q.revenue %}
@@ -76,7 +77,7 @@
           <li><span class="swatch trend-result"></span>Rörelseresultat</li>
         </ul>
         <ul class="trend-chart">
-          {% for q in site.data.accounting %}
+          {% for q in quarters %}
             {% assign from = q.from | date: "%-m" | minus: 1 %}
             {% assign to = q.to | date: "%-m" | minus: 1 %}
             <li>
