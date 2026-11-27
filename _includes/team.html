@@ -10,7 +10,7 @@
             {% for member in site.people %}
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="team-member">
-                    <img src="img/team/{{ member.pic }}.jpg" class="img-responsive img-circle" alt="">
+                    <img src="img/team/{{ member.pic }}.jpg?v={{ site.time | date: '%s' }}" class="img-responsive img-circle" alt="">
                     <h3>{{ member.name }}</h3>
                     <p class="text-muted">{{ member.about }}</p>
                     <ul class="list-inline social-buttons">
