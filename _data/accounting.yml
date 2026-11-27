@@ -2,14 +2,6 @@
 # the "Period" column of the income statement.
 # Costs are positive amounts. revenue - external_costs - personnel_costs
 # must equal operating_result.
-- from: 2024-07-01
-  to: 2024-09-30
-  pdf: /assets/pdf/accounting/Resultatrapport_20240701-20240930_Adaptiv_Sthlm_AB.pdf
-  revenue: 1148368.67
-  external_costs: 174709.29
-  personnel_costs: 1168080.11
-  operating_result: -194420.73
-
 - from: 2024-10-01
   to: 2024-12-31
   pdf: /assets/pdf/accounting/Resultatrapport_20241001-20241231_Adaptiv_Sthlm_AB.pdf
@@ -65,3 +57,11 @@
   external_costs: 292488.14
   personnel_costs: 1301917.37
   operating_result: 496687.19
+
+- from: 2026-07-01
+  to: 2026-09-30
+  pdf: /assets/pdf/accounting/Resultatrapport__20260701-20260930_Adaptiv_Sthlm_AB.pdf
+  revenue: 1387558.50
+  external_costs: 211943.26
+  personnel_costs: 1160286.39
+  operating_result: 15328.85
