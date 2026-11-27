@@ -1,102 +1,207 @@
 <!-- About Section -->
-<section class="bg-light-gray">
+<section id="accounting" class="bg-light-gray">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
         <h2 class="section-heading">Redovisning</h2>
-        <h3 class="section-subheading text-muted">
-          Här berättar vi löpande hur företaget går ekonomiskt
-        </h3>
+      </div>
+    </div>
+    {% assign months = "jan,feb,mar,apr,maj,jun,jul,aug,sep,okt,nov,dec" | split: "," %}
+    {% assign series = "revenue,costs,result" | split: "," %}
+    {% assign max_share = 100 %}
+    {% assign max_amount = 0 %}
+    {% assign min_result = 0 %}
+    {% for q in site.data.accounting %}
+      {% assign costs = q.external_costs | plus: q.personnel_costs %}
+      {% assign share = costs | times: 100 | divided_by: q.revenue %}
+      {% if share > max_share %}{% assign max_share = share %}{% endif %}
+      {% if q.revenue > max_amount %}{% assign max_amount = q.revenue %}{% endif %}
+      {% if costs > max_amount %}{% assign max_amount = costs %}{% endif %}
+      {% if q.operating_result < min_result %}{% assign min_result = q.operating_result %}{% endif %}
+    {% endfor %}
+    {% comment %}Both charts share one scale across all quarters, so a loss
+    quarter's bars reach past the others instead of being squeezed to fit.{% endcomment %}
+    {% assign hundred = 10000 | divided_by: max_share | round: 2 %}
+    {% assign span = max_amount | minus: min_result %}
+    {% assign zero = min_result | times: -100 | divided_by: span | round: 2 %}
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h2>Vart tar en fakturerad hundralapp vägen?</h2>
+        <p class="text-muted">
+          Av varje 100 kr vi fakturerar går det mesta till lön och sociala avgifter.
+          Det som blir kvar är rörelseresultatet. Belopp i kronor per 100 kr.
+        </p>
+        <ul class="chart-legend">
+          <li><span class="swatch split-personnel"></span>Personalkostnader</li>
+          <li><span class="swatch split-external"></span>Övriga externa kostnader</li>
+          <li><span class="swatch split-result"></span>Rörelseresultat</li>
+          <li><span class="swatch swatch-line"></span>100 kr</li>
+        </ul>
+        <ul class="split-chart">
+          {% for q in site.data.accounting %}
+            {% assign from = q.from | date: "%-m" | minus: 1 %}
+            {% assign to = q.to | date: "%-m" | minus: 1 %}
+            {% assign personnel = q.personnel_costs | times: 100 | divided_by: q.revenue %}
+            {% assign external = q.external_costs | times: 100 | divided_by: q.revenue %}
+            {% assign personnel_kr = personnel | round %}
+            {% assign external_kr = external | round %}
+            {% comment %}Derived from the rounded costs so the three labels add up to 100.{% endcomment %}
+            {% assign result_kr = 100 | minus: personnel_kr | minus: external_kr %}
+            <li>
+              <span class="split-label">
+                {{ months[from] }}–{{ months[to] }} {{ q.to | date: "%Y" }}
+                {% if q.operating_result < 0 %}
+                  · förlust {{ result_kr | times: -1 }} kr
+                {% endif %}
+              </span>
+              <span class="split-bar">
+                <span class="split-personnel" style="width: {{ personnel | times: 100 | divided_by: max_share | round: 2 }}%"><span class="sr-only">Personalkostnader</span> {{ personnel_kr }}</span>
+                <span class="split-external" style="width: {{ external | times: 100 | divided_by: max_share | round: 2 }}%"><span class="sr-only">Övriga externa kostnader</span> {{ external_kr }}</span>
+                {% if q.operating_result > 0 %}
+                  <span class="split-result" style="width: {{ 100 | minus: personnel | minus: external | times: 100 | divided_by: max_share | round: 2 }}%"><span class="sr-only">Rörelseresultat</span> {{ result_kr }}</span>
+                {% endif %}
+                <span class="split-hundred" style="left: {{ hundred }}%"></span>
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <h2>Kvartal för kvartal</h2>
+        <p class="text-muted">
+          Intäkter, kostnader och rörelseresultat per kvartal, i miljoner kronor.
+          Klicka på ett kvartal för att läsa hela resultaträkningen.
+        </p>
+        <ul class="chart-legend">
+          <li><span class="swatch trend-revenue"></span>Intäkter</li>
+          <li><span class="swatch trend-costs"></span>Kostnader</li>
+          <li><span class="swatch trend-result"></span>Rörelseresultat</li>
+        </ul>
+        <ul class="trend-chart">
+          {% for q in site.data.accounting %}
+            {% assign from = q.from | date: "%-m" | minus: 1 %}
+            {% assign to = q.to | date: "%-m" | minus: 1 %}
+            <li>
+              <a class="dark" href="{{ q.pdf }}">{{ months[from] }}–{{ months[to] }} {{ q.to | date: "%Y" }}</a>
+              {% for s in series %}
+                {% case s %}
+                  {% when "revenue" %}
+                    {% assign value = q.revenue %}
+                    {% assign name = "Intäkter" %}
+                  {% when "costs" %}
+                    {% assign value = q.external_costs | plus: q.personnel_costs %}
+                    {% assign name = "Kostnader" %}
+                  {% when "result" %}
+                    {% assign value = q.operating_result %}
+                    {% assign name = "Rörelseresultat" %}
+                {% endcase %}
+                {% assign width = value | abs | times: 100 | divided_by: span | round: 2 %}
+                {% if value < 0 %}
+                  {% assign left = zero | minus: width %}
+                {% else %}
+                  {% assign left = zero %}
+                {% endif %}
+                {% assign mkr = value | divided_by: 1000000.0 | round: 2 | append: "" %}
+                {% assign decimals = mkr | split: "." | last %}
+                {% if decimals.size == 1 %}{% assign mkr = mkr | append: "0" %}{% endif %}
+                <span class="trend-line">
+                  <span class="trend-track">
+                    <span class="trend-zero" style="left: {{ zero }}%"></span>
+                    <span class="trend-{{ s }}" style="left: {{ left }}%; width: {{ width }}%"></span>
+                  </span>
+                  <span class="trend-value"><span class="sr-only">{{ name }}</span> {{ mkr | replace: ".", "," | replace: "-", "−" }} mkr</span>
+                </span>
+              {% endfor %}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
     <div class="row">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <h2>Kvartalsrapporter</h2>
-        </div>
+      <div class="col-lg-8 col-lg-offset-2">
+        <h2>Kvartalsrapporter</h2>
       </div>
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-left">
-          <ul>
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport_20240701-20240930_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 240701-240930</a
-                >
-              </p>
-            </li>
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport_20241001-20241231_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 241001-241231</a
-                >
-              </p>
-            </li>
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport_20250101-20250331_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 250101-250331</a
-                >
-              </p>
-            </li>
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport_20250401-20250630_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 250401-250630</a
-                >
-              </p>
-            </li>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-left">
+        <ul>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport_20240701-20240930_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 240701-240930</a
+              >
+            </p>
+          </li>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport_20241001-20241231_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 241001-241231</a
+              >
+            </p>
+          </li>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport_20250101-20250331_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 250101-250331</a
+              >
+            </p>
+          </li>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport_20250401-20250630_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 250401-250630</a
+              >
+            </p>
+          </li>
 
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport_20250701-20250930_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 250701-250930</a
-                >
-              </p>
-            </li>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport_20250701-20250930_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 250701-250930</a
+              >
+            </p>
+          </li>
 
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport_20251001-20251231_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 251001-251231</a
-                >
-              </p>
-            </li>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport_20251001-20251231_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 251001-251231</a
+              >
+            </p>
+          </li>
 
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport__20260101-20260331_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 260101-260331</a
-                >
-              </p>
-            </li>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport__20260101-20260331_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 260101-260331</a
+              >
+            </p>
+          </li>
 
-            <li>
-              <p class="text-muted">
-                <a
-                  class="dark"
-                  href="/assets/pdf/accounting/Resultatrapport__20260401-20260630_Adaptiv_Sthlm_AB.pdf"
-                  >Resultaträkning 260401-260630</a
-                >
-              </p>
-            </li>
+          <li>
+            <p class="text-muted">
+              <a
+                class="dark"
+                href="/assets/pdf/accounting/Resultatrapport__20260401-20260630_Adaptiv_Sthlm_AB.pdf"
+                >Resultaträkning 260401-260630</a
+              >
+            </p>
+          </li>
 
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
   </div>

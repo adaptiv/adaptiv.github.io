@@ -48,3 +48,153 @@ a.dark:active {
   display: inline-block;
   width: 6em;
 }
+
+section#accounting {
+  padding-top: 30px;
+}
+
+section#accounting h2:not(.section-heading) {
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+.chart-legend,
+.split-chart,
+.trend-chart {
+  list-style: none;
+  padding-left: 0;
+}
+
+.chart-legend li {
+  display: inline-block;
+  margin-right: 1.5em;
+  font-size: 13px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.swatch-line {
+  width: 2px;
+  height: 14px;
+  background-color: #{{ site.data.template.color.secondary-dark }};
+}
+
+.split-chart {
+  margin-bottom: 40px;
+}
+
+.split-chart li {
+  margin-bottom: 12px;
+}
+
+.split-label {
+  display: block;
+  font-size: 13px;
+}
+
+.split-bar {
+  position: relative;
+  display: flex;
+  height: 24px;
+}
+
+.split-bar > span {
+  box-sizing: border-box;
+  overflow: hidden;
+  /* the right border doubles as the gap between segments */
+  border-right: 2px solid #f7f7f7;
+  padding-left: 4px;
+  font-size: 12px;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.split-personnel {
+  background-color: #{{ site.data.template.color.secondary-dark }};
+  color: #fff;
+}
+
+.split-external {
+  background-color: #{{ site.data.template.color.muted }};
+  color: #fff;
+}
+
+.split-bar .split-result,
+.swatch.split-result {
+  background-color: #fff;
+  border: 2px solid #{{ site.data.template.color.primary }};
+  color: #{{ site.data.template.color.secondary-dark }};
+}
+
+.split-bar .split-hundred {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  margin-left: -2px;
+  padding: 0;
+  border: 0;
+  background-color: #{{ site.data.template.color.secondary-dark }};
+}
+
+.trend-chart li {
+  margin-bottom: 16px;
+}
+
+.trend-chart a {
+  display: block;
+  font-size: 13px;
+}
+
+.trend-line {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.trend-track {
+  position: relative;
+  flex: 1;
+  height: 10px;
+}
+
+.trend-track span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+.trend-track .trend-zero {
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background-color: #{{ site.data.template.color.muted }};
+}
+
+.trend-value {
+  width: 6.5em;
+  text-align: right;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.trend-revenue {
+  background-color: #{{ site.data.template.color.secondary }};
+}
+
+.trend-costs {
+  background-color: #{{ site.data.template.color.muted }};
+}
+
+.trend-track .trend-result,
+.swatch.trend-result {
+  background-color: #fff;
+  border: 2px solid #{{ site.data.template.color.primary }};
+}
