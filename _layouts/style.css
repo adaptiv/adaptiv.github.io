@@ -53,9 +53,18 @@ section#accounting {
   padding-top: 30px;
 }
 
-section#accounting h2:not(.section-heading) {
+section#accounting-reports {
+  padding: 40px 0;
+}
+
+section#accounting h2:not(.section-heading),
+section#accounting-reports h2 {
   font-size: 20px;
   margin-top: 40px;
+}
+
+section#accounting-reports h2 {
+  margin-top: 0;
 }
 
 .chart-legend,
