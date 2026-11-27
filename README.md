@@ -67,7 +67,7 @@ rm Gemfile.lock
 bundle install
 ```
 
-Next step, clean out th ruby environment:
+Next step, clean out the Ruby environment:
 
 ```bash
 # Check your local Ruby version (listed in .ruby-version)
@@ -77,13 +77,13 @@ ruby -v
 gem uninstall --all --ignore-dependencies --executables
 
 # Uninstall the current Ruby version
-rbenv uninstall <version>
+asdf uninstall ruby <version>
 
 # Clear gem cache
 gem cleanup
 
 # Reinstall Ruby
-rbenv install <version>
+asdf install ruby <version>
 
 # Reinstall Bundler
 gem install bundler
