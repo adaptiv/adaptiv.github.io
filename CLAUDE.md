@@ -25,7 +25,7 @@ A push to `main` publishes the site. There is no workflow in `.github/`; GitHub 
 
 Jekyll publishes every file in the repo root that is not listed under `exclude` in `_config.yml`, and renders Markdown files as pages even without front matter. Add new non-site files (docs, scripts) to that list.
 
-`jekyll-seo-tag` and `jekyll-sitemap` are enabled under `plugins` in `_config.yml`; both ship with the `github-pages` gem. `{% seo title=false %}` in `_includes/head.html` writes the description, canonical URL, Open Graph tags and JSON-LD, while the `<title>` is still hand-written there. The sitemap plugin generates `sitemap.xml` and `robots.txt`; a page opts out with `sitemap: false` in its front matter, as `404.html` does.
+`jekyll-seo-tag` and `jekyll-sitemap` are enabled under `plugins` in `_config.yml`; both ship with the `github-pages` gem. `{% seo %}` in `_includes/head.html` writes the title, description, canonical URL, Open Graph tags and JSON-LD. The start page title is `title | tagline` from `_config.yml`; other pages get `page title | Adaptiv`, so give a new page `title` and `description` in its front matter, or it falls back to the site-wide ones. The sitemap plugin generates `sitemap.xml` and `robots.txt`; a page opts out with `sitemap: false` in its front matter, as `404.html` does.
 
 Custom plugins in `_plugins/` do not run in that build, nor locally under the `github-pages` gem. The live `style.css` contains the unconverted output of the `hex_to_rgb` filter (`rgba(62822d, .9)`), and the `localize` date filter is commented out in `_layouts/post.html`. Do not build features on `_plugins/` or `_locales/`.
 

@@ -4,7 +4,8 @@ url: https://adaptiv.se
 
 # Site settings
 title: Adaptiv
-description: "Adaptiv är ett IT-konsultbolag med verksamhet i Stockholmsområdet. Vår utgångspunkt är att de produkter, system och funktioner vi skapar ska ge verklig affärsnytta och nöjda kunder. Vi kan skapa de metodmässiga och tekniska förutsättningarna för detta."
+tagline: Seniora konsulter för AI-agentstödd systemutveckling
+description: "Fem seniora konsulter i Stockholm som hjälper team att styra AI-agenter ingenjörsmässigt, med arkitektur, tester och arbetssätt som gör att koden håller."
 
 # Team names, titles and social links
 people:
