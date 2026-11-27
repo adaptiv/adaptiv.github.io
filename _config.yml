@@ -51,3 +51,12 @@ social:
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+# Setting exclude replaces Jekyll's defaults, so Gemfile, Gemfile.lock and vendor are repeated here
+exclude:
+  - CLAUDE.md
+  - README.md
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - vendor
