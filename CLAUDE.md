@@ -49,7 +49,7 @@ Running text is 17px in the body color (`secondary-dark`), set once on `p` in `a
 
 - Team members are the `people` list in `_config.yml`; `pic: N` maps to `img/team/N.jpg`. Changes to `_config.yml` need a restart of `make start`.
 - Articles are Markdown files in `_posts/` named `YYYY-MM-DD-title.md` with front matter `layout: post`, `title` and `author`. The date comes from the filename. Unfinished articles go in `_drafts/` without a date.
-- A new quarterly report is a PDF in `assets/pdf/accounting/`, a new `<li>` at the top of the list in `_includes/accounting.html`, and a new entry in `_data/accounting.yml` with the sums from the report's "Period" column. The list and the data hold the eight latest quarters only; older PDFs stay in the folder without a link. The charts on `/accounting/` are drawn from the data file with Liquid and CSS, without JavaScript. The skill `add-quarterly-report` in `.claude/skills/` reads the PDFs in the folder, updates the data and the list, and checks the figures. Climate reports are in `assets/pdf/` and linked from `_includes/sustainability.html`.
+- A new quarterly report is a PDF in `assets/pdf/accounting/` and a new entry in `_data/accounting.yml` with the sums from the report's "Period" column. The data holds the eight latest quarters only; older PDFs stay in the folder without a link. The charts and the list of report links on `/accounting/` are drawn from the data file with Liquid and CSS, without JavaScript. The skill `add-quarterly-report` in `.claude/skills/` reads the PDFs in the folder, updates the data, and checks the figures. Climate reports are in `assets/pdf/` and linked from `_includes/sustainability.html`.
 
 ## Leftovers from the theme
 

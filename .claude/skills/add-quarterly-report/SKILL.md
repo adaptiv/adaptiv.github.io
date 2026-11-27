@@ -1,11 +1,11 @@
 ---
 name: add-quarterly-report
-description: Bring the accounting page of adaptiv.se in line with the quarterly income statements (Resultatrapport PDFs) in assets/pdf/accounting - enter the figures of new reports in _data/accounting.yml so the charts include them, add their links to the list, and keep only the eight latest quarters in both. Use this whenever the user has added or mentions a new quarterly report, kvartalsrapport, resultatrapport or resultaträkning, asks to update the accounting page or "redovisningen", or asks why a quarter is missing from the charts, even if they only say "jag har lagt in en ny rapport".
+description: Bring the accounting page of adaptiv.se in line with the quarterly income statements (Resultatrapport PDFs) in assets/pdf/accounting - enter the figures of new reports in _data/accounting.yml so the charts and the list of links include them, and keep only the eight latest quarters. Use this whenever the user has added or mentions a new quarterly report, kvartalsrapport, resultatrapport or resultaträkning, asks to update the accounting page or "redovisningen", or asks why a quarter is missing from the charts, even if they only say "jag har lagt in en ny rapport".
 ---
 
 # Add a quarterly report
 
-The page `/accounting/` shows two charts drawn from `_data/accounting.yml` and a list of links to the report PDFs. The PDFs in `assets/pdf/accounting/` are the source: the user puts a new report there, and this skill makes the data and the list follow. Both hold the eight latest quarters and nothing else, so the page stays short and the charts and the list show the same quarters.
+The page `/accounting/` shows two charts and a list of links to the report PDFs, all drawn from `_data/accounting.yml`. The PDFs in `assets/pdf/accounting/` are the source: the user puts a new report there, and this skill makes the data follow. The data holds the eight latest quarters and nothing else, so the page stays short.
 
 The charts and the PDF they link to must show the same figures, so every number comes from the PDF and is checked before it is written.
 
@@ -15,10 +15,10 @@ List `assets/pdf/accounting/`. The files are named `Resultatrapport_YYYYMMDD-YYY
 
 If the user gives a PDF that is somewhere else (Dropbox, Downloads), copy it into the folder under that naming first.
 
-Compare the eight with `_data/accounting.yml` and with the list under "Kvartalsrapporter" in `_includes/accounting.html`:
+Compare the eight with `_data/accounting.yml`:
 
 - A report without a data entry is new: do steps 2 and 3 for it.
-- A data entry or list item for a quarter outside the eight is removed in step 3.
+- A data entry for a quarter outside the eight is removed in step 3.
 - If nothing differs, say so and stop.
 
 ## 2. Take four figures from each new report
@@ -44,9 +44,9 @@ python3 -c "from decimal import Decimal as D; r,e,p,o=map(D,'2091092.70 292488.1
 
 `revenue - external_costs - personnel_costs` must equal `operating_result`. If it does not, stop and tell the user what differs. The usual causes are a misread digit, other operating income (SUMMA RÖRELSENS INTÄKTER differs from Summa nettoomsättning) or a cost group the charts do not know about, such as depreciation. The charts split revenue into exactly these parts, so a new group needs a decision from the user, not a quiet adjustment.
 
-## 3. Update the data and the list
+## 3. Update the data
 
-**`_data/accounting.yml`** holds one entry per quarter, oldest first (the template reverses it). Add the new entries in date order and remove the entries for quarters outside the eight:
+`_data/accounting.yml` holds one entry per quarter, oldest first (the template reverses it). Add the new entries in date order and remove the entries for quarters outside the eight:
 
 ```yaml
 - from: 2026-07-01
@@ -58,9 +58,7 @@ python3 -c "from decimal import Decimal as D; r,e,p,o=map(D,'2091092.70 292488.1
   operating_result: 100000.00
 ```
 
-Decimal point, two decimals, no thousands separators. `pdf` is the file's actual name, underscores included.
-
-**The list** under "Kvartalsrapporter" in `_includes/accounting.html` is newest first. Add an `<li>` at the top for each new report, copying the markup of the item after it, and remove the items at the bottom for quarters outside the eight. The link text is `Resultaträkning YYMMDD-YYMMDD`. Check the end date against the PDF: a wrong end date in a label has slipped through before.
+Decimal point, two decimals, no thousands separators. `pdf` is the file's actual name, underscores included. Check `from` and `to` against the PDF: the labels in the charts and in the list under "Kvartalsrapporter" are written from them.
 
 Leave the PDFs themselves in the folder, also the ones older than the eight. They are published and may be linked from elsewhere; deleting them is the user's call.
 

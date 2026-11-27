@@ -128,78 +128,13 @@
     <div class="row">
       <div class="text-column text-left">
         <ul class="list-unstyled">
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport__20260701-20260930_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 260701-260930</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport__20260401-20260630_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 260401-260630</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport__20260101-20260331_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 260101-260331</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport_20251001-20251231_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 251001-251231</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport_20250701-20250930_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 250701-250930</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport_20250401-20250630_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 250401-250630</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport_20250101-20250331_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 250101-250331</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a
-                class="dark"
-                href="/assets/pdf/accounting/Resultatrapport_20241001-20241231_Adaptiv_Sthlm_AB.pdf"
-                >Resultaträkning 241001-241231</a
-              >
-            </p>
-          </li>
+          {% for q in quarters %}
+            <li>
+              <p>
+                <a class="dark" href="{{ q.pdf }}">Resultaträkning {{ q.from | date: "%y%m%d" }}-{{ q.to | date: "%y%m%d" }}</a>
+              </p>
+            </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
