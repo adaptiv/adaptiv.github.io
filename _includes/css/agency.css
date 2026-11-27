@@ -631,6 +631,18 @@ section .section-subheading {
     }
 }
 
+/* Flex instead of floats, so a taller card cannot snag the next row, and a short last row is centered */
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-members:before,
+.team-members:after {
+    content: none;
+}
+
 .team-member {
     margin-bottom: 50px;
     text-align: center;
