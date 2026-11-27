@@ -690,6 +690,10 @@ aside.clients img {
     margin: 50px auto;
 }
 
+.about-openness {
+    margin-top: 30px;
+}
+
 section#contact {
     background-color: #333;
 }
