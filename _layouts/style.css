@@ -21,17 +21,18 @@ a.dark:active {
   line-height: 2;
 }
 
+.post li,
+.posts li,
+.contact-details {
+  font-size: 17px;
+}
+
 .post p.post-intro {
   color: #{{ site.data.template.color.muted }};
   font-size: 15px;
 }
 
-.post p {
-  font-size: 15px;
-}
-
 .post li {
-  font-size: 15px;
   padding-bottom: 8px;
 }
 
@@ -49,18 +50,36 @@ a.dark:active {
   width: 6em;
 }
 
+/* Running text and what belongs with it share one centered column that
+   keeps lines at about 70 characters. */
+.text-column {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.text-column h2 {
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+ul:not([class]),
+ol:not([class]) {
+  padding-left: 22px;
+}
+
+/* Short centered captions in narrow columns */
+.team-member p,
+#services p {
+  font-size: 16px;
+}
+
 section#accounting {
   padding-top: 30px;
 }
 
 section#accounting-reports {
   padding: 40px 0;
-}
-
-section#accounting h2:not(.section-heading),
-section#accounting-reports h2 {
-  font-size: 20px;
-  margin-top: 40px;
 }
 
 section#accounting-reports h2 {
@@ -84,7 +103,6 @@ section#accounting-reports h2 {
    narrower, so the items share one row or take a row each, never two rows. */
 .chart-legend li {
   flex-basis: calc((var(--one-row) - 100%) * 999);
-  font-size: 13px;
   white-space: nowrap;
 }
 
@@ -104,9 +122,16 @@ section#accounting-reports h2 {
   margin-bottom: 12px;
 }
 
-.split-label {
+.split-label,
+.trend-chart a {
   display: block;
-  font-size: 13px;
+}
+
+.chart-legend li,
+.split-label,
+.trend-chart a,
+.trend-value {
+  font-size: 15px;
 }
 
 .split-bar {
@@ -158,11 +183,6 @@ section#accounting-reports h2 {
   margin-bottom: 16px;
 }
 
-.trend-chart a {
-  display: block;
-  font-size: 13px;
-}
-
 .trend-line {
   display: flex;
   align-items: center;
@@ -192,7 +212,6 @@ section#accounting-reports h2 {
 .trend-value {
   width: 6.5em;
   text-align: right;
-  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 

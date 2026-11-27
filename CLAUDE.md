@@ -41,6 +41,8 @@ Pages are thin root files that only pick a layout; the content is in `_includes/
 
 `style.css` in the root is a stub with `layout: style`. The real stylesheet is assembled by `_layouts/style.css`, which inlines `_includes/css/bootstrap.min.css` and `_includes/css/agency.css` and then adds the site's own rules. Both `agency.css` and the layout are Liquid templates: colors and fonts come from `_data/template.yml` (hex codes without the leading `#`). Change a color there, not in the CSS.
 
+Running text is 17px in the body color (`secondary-dark`), set once on `p` in `agency.css`. Put text and what belongs with it in a `<div class="text-column">` inside a `row`: it centers a column of about 70 characters per line and styles the `h2` subheadings in it. Do not put `text-muted` on body paragraphs; it is for subheadings and meta lines. Short captions in narrow columns (team, services) are 16px.
+
 ### Content
 
 - Team members are the `people` list in `_config.yml`; `pic: N` maps to `img/team/N.jpg`. Changes to `_config.yml` need a restart of `make start`.
