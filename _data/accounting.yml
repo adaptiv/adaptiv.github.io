@@ -1,30 +1,7 @@
-# One entry per quarter, from the "Period" column of the income statement.
+# One entry per quarter for the eight latest quarters, oldest first, from
+# the "Period" column of the income statement.
 # Costs are positive amounts. revenue - external_costs - personnel_costs
 # must equal operating_result.
-- from: 2023-10-01
-  to: 2023-12-31
-  pdf: /assets/pdf/accounting/Resultatrapport_20231001-20231231_Adaptiv_Sthlm_AB.pdf
-  revenue: 1935473.37
-  external_costs: 272903.01
-  personnel_costs: 1200881.10
-  operating_result: 461689.26
-
-- from: 2024-01-01
-  to: 2024-03-31
-  pdf: /assets/pdf/accounting/Resultatrapport_20240101-20240331_Adaptiv_Sthlm_AB.pdf
-  revenue: 1636647.97
-  external_costs: 259095.14
-  personnel_costs: 1155081.26
-  operating_result: 222471.57
-
-- from: 2024-04-01
-  to: 2024-06-30
-  pdf: /assets/pdf/accounting/Resultatrapport_20240401-20240630_Adaptiv_Sthlm_AB.pdf
-  revenue: 1577296.76
-  external_costs: 218212.46
-  personnel_costs: 1244344.49
-  operating_result: 114739.81
-
 - from: 2024-07-01
   to: 2024-09-30
   pdf: /assets/pdf/accounting/Resultatrapport_20240701-20240930_Adaptiv_Sthlm_AB.pdf
