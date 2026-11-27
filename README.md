@@ -45,7 +45,7 @@ Images are in '/img/about/'
 
 ## Run locally
 
-- [asdf](brew install asdf)
+- [asdf](https://asdf-vm.com/) (`brew install asdf`)
 
 Run:
 
