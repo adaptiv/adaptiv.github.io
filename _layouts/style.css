@@ -65,10 +65,18 @@ section#accounting h2:not(.section-heading) {
   padding-left: 0;
 }
 
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+
+/* The basis is 0 while the list is wider than --one-row and huge once it is
+   narrower, so the items share one row or take a row each, never two rows. */
 .chart-legend li {
-  display: inline-block;
-  margin-right: 1.5em;
+  flex-basis: calc((var(--one-row) - 100%) * 999);
   font-size: 13px;
+  white-space: nowrap;
 }
 
 .swatch {
@@ -77,12 +85,6 @@ section#accounting h2:not(.section-heading) {
   height: 12px;
   margin-right: 6px;
   vertical-align: -1px;
-}
-
-.swatch-line {
-  width: 2px;
-  height: 14px;
-  background-color: #{{ site.data.template.color.secondary-dark }};
 }
 
 .split-chart {
@@ -121,7 +123,7 @@ section#accounting h2:not(.section-heading) {
 }
 
 .split-external {
-  background-color: #{{ site.data.template.color.muted }};
+  background-color: #{{ site.data.template.color.accent }};
   color: #fff;
 }
 
@@ -190,7 +192,7 @@ section#accounting h2:not(.section-heading) {
 }
 
 .trend-costs {
-  background-color: #{{ site.data.template.color.muted }};
+  background-color: #{{ site.data.template.color.muted-light }};
 }
 
 .trend-track .trend-result,

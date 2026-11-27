@@ -4,6 +4,9 @@ color:
   secondary: 475e20
   secondary-dark: 333
   muted: 666
+  muted-light: 8c8c8c
+  # The orange logo (CMYK 0/60/100/28), lightened to match how primary relates to the green logo
+  accent: b56224
 
 # Font Families
 font:
