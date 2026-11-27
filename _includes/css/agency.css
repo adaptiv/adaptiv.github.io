@@ -252,6 +252,7 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-header {
+        position: relative;
         float: none;
     }
 
@@ -293,8 +294,12 @@ fieldset[disabled] .btn-xl.active {
         margin-left: -15px;
     }
 
+    /* Center the logo in the bar, independent of the hamburger on the right */
     .navbar>.container .navbar-brand {
+        position: absolute;
+        left: 50%;
         margin-left: 0;
+        transform: translateX(-50%);
     }
 }
 
@@ -342,6 +347,10 @@ section .section-subheading {
 .service-heading {
     margin: 15px 0;
     text-transform: none;
+}
+
+#services .col-md-4 {
+    margin-bottom: 30px;
 }
 
 #portfolio .portfolio-item {

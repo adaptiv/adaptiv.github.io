@@ -35,7 +35,7 @@ Pages are thin root files that only pick a layout; the content is in `_includes/
 - `sustainability.html` and `accounting.html` → a layout of the same name → the include of the same name.
 - `posts.html` lists the articles and uses `_layouts/default.html`, as does `_layouts/post.html`.
 
-`permalink: pretty` is set, so pages are served at `/posts/`, `/sustainability/` and `/accounting/`. The nav in `_includes/header.html` links to start page sections with `/#services` style anchors. `/accounting` is not in the nav; it is linked from `_includes/about.html`.
+`permalink: pretty` is set, so pages are served at `/posts/`, `/sustainability/` and `/accounting/`. The nav in `_includes/header.html` links to start page sections with `/#team` style anchors. `/accounting` is not in the nav; it is linked from `_includes/about.html`.
 
 ### Styling
 
