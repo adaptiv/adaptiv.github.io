@@ -700,11 +700,11 @@ footer {
     text-align: center;
 }
 
-footer span.copyright {
-    text-transform: uppercase;
-    text-transform: none;
-    font-family: {{ site.data.template.font.primary }};
-    line-height: 40px;
+/* The footer columns stack below 992px */
+@media(max-width:991px) {
+    footer .col-md-4+.col-md-4 {
+        margin-top: 20px;
+    }
 }
 
 footer ul.quicklinks {
