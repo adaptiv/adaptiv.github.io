@@ -14,9 +14,22 @@
                 </div>
                 <div>
                     <div>E-post: <a href="mailto:info@adaptiv.se">info@adaptiv.se</a></div>
-                    <div>Org.nummer: 556775-6407</div>
+                    <div>Org.nummer: 556775-6407<button type="button" class="copy-button" data-copy="556775-6407"
+                            title="Kopiera organisationsnummer" aria-label="Kopiera organisationsnummer"><i
+                                class="fa fa-copy"></i></button></div>
                 </div>
             </div>
         </div>
+        <script>
+            document.querySelectorAll('.copy-button').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var icon = button.querySelector('.fa');
+                    navigator.clipboard.writeText(button.dataset.copy).then(function () {
+                        icon.className = 'fa fa-check';
+                        setTimeout(function () { icon.className = 'fa fa-copy'; }, 1500);
+                    });
+                });
+            });
+        </script>
     </div>
 </section>

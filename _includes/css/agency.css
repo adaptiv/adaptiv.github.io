@@ -683,6 +683,20 @@ section#contact .contact-details {
     gap: 15px 30px;
 }
 
+section#contact .copy-button {
+    margin-left: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+section#contact .copy-button:hover,
+section#contact .copy-button:focus {
+    color: #{{ site.data.template.color.primary }};
+}
+
 section#contact::-webkit-input-placeholder {
     text-transform: uppercase;
     font-family: {{ site.data.template.font.primary }};
