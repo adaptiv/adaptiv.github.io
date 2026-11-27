@@ -50,9 +50,7 @@ Images are in '/img/about/'
 Run:
 
 ```bash
-asdf install
-gem install bundler
-bundle install
+make install
 make start
 ```
 
