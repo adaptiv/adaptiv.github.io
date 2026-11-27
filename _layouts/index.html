@@ -15,6 +15,32 @@
   {% include footer.html %}
   {% include js.html %}
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Adaptiv Sthlm AB",
+      "alternateName": {{ site.title | jsonify }},
+      "url": {{ site.url | append: "/" | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "email": "info@adaptiv.se",
+      "foundingDate": "2009",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bondegatan 30",
+        "postalCode": "116 33",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Organisationsnummer",
+        "value": "556775-6407"
+      },
+      "sameAs": {{ site.social | map: "url" | jsonify }}
+    }
+  </script>
+
 </body>
 
 </html>
