@@ -50,6 +50,9 @@ social:
 
 # Build settings
 markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
 permalink: pretty
 
 # Setting exclude replaces Jekyll's defaults, so Gemfile, Gemfile.lock and vendor are repeated here
