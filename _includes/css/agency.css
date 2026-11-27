@@ -67,9 +67,32 @@ h6 {
     margin: 0 auto;
 }
 
-.img-heading {
-    margin: 0px auto;
-    margin-bottom: 50px;
+/* Edge-to-edge image with the page heading on top, right below the fixed menu */
+.sustainability-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(240px, 40vw, 480px);
+    margin-top: 60px;
+    padding: 0;
+    background: url('{{ site.baseurl }}/img/sunset-wide.jpg') center / cover no-repeat;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,.6);
+}
+
+.sustainability-hero .section-heading,
+.sustainability-hero .section-subheading {
+    color: #fff;
+}
+
+.sustainability-hero .section-subheading {
+    margin-bottom: 0;
+}
+
+@media(min-width:992px) {
+    .sustainability-hero {
+        margin-top: 80px;
+    }
 }
 
 .bg-light-gray {
