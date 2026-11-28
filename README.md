@@ -39,10 +39,6 @@ Team members and info are in global configuration file '_config.yml'
 
 Images are in '/img/team/'
 
-### About
-
-Images are in '/img/about/'
-
 ## Run locally
 
 - [asdf](https://asdf-vm.com/) (`brew install asdf`)
@@ -60,7 +56,18 @@ Browse to http://localhost:4000
 
 https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll
 
-First, remove the Gemfile.lock and regenerate the gems:
+First, check that your Ruby is the version listed in .ruby-version:
+
+```bash
+ruby -v
+```
+
+If it is not, run `asdf install` and try again. On a newer Ruby, `bundle install`
+drops the locked versions, resolves `github-pages` to an ancient release and fails
+on its native extensions. Removing the Gemfile.lock there makes the install pass,
+but with an older `github-pages` than the locked one, so fix the Ruby version instead.
+
+If the version is right, remove the Gemfile.lock and regenerate the gems:
 
 ```bash
 rm Gemfile.lock
@@ -70,9 +77,6 @@ bundle install
 Next step, clean out the Ruby environment:
 
 ```bash
-# Check your local Ruby version (listed in .ruby-version)
-ruby -v
-
 # Remove all installed gems
 gem uninstall --all --ignore-dependencies --executables
 
